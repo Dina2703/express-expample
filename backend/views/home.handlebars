@@ -1,0 +1,20 @@
+<h2 class="text-center mb-3">{{title}}</h2>
+<form action="/api/colors" method="POST" class="mb-4">
+  <div class="form-group">
+    <label for="name">Color name</label>
+    <input type="text" class="form-control" name="color" />
+  </div>
+  <div class="form-group">
+    <label for="name">Color Hex value</label>
+    <input type="text" class="form-control" name="value" />
+  </div>
+  <input type="submit" value="Add Color" class="btn btn-primary m-2" />
+
+</form>
+<h4>Colors</h4>
+<ul class="list-group">{{#each colors}}
+    <li class="list-group-item">{{this.color}}: {{this.value}} </li>
+
+  {{/each}}</ul>
+
+<a href="/api/colors" class="btn btn-light mt-4">Visit API </a>

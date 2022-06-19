@@ -1,7 +1,9 @@
 const express = require("express");
 // const testRoutes = require("./routes/requestRoutes.js");
 const path = require("path");
+const { engine } = require("express-handlebars");
 const colorRouter = require("./routes/api/colors");
+const colors = require("../data");
 
 const logger = require("./middleware/logger");
 
@@ -9,7 +11,20 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-//middleware
+//Handlebars Middleware
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./views");
+
+//Homepage Router for 'express-handlebars' template
+app.get("/", (req, res) => {
+  res.render("home", {
+    title: "Color App",
+    colors,
+  });
+});
+
+//Body Parser Middleware
 // express.json() is a body parser for post request except html post form and express.
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

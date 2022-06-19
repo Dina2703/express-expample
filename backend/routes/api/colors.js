@@ -35,6 +35,8 @@ router.post("/", (req, res) => {
   }
   colors.push(newColor);
   res.json(colors);
+  //redirect to show on 'express-handlebars' template
+  // res.redirect("/");
 });
 
 //UPDATE color item
